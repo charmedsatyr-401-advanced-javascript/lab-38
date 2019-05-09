@@ -1,12 +1,11 @@
 import React from 'react';
+import If from 'react-ifs';
 
 import ToDoProvider from './todo-provider';
 
 import Count from './count';
 import AddToDo from './add-todo';
 import List from './list';
-
-import If from '../if';
 
 import './todo.scss';
 

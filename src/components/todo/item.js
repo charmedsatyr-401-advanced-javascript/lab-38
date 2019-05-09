@@ -1,8 +1,8 @@
 import React from 'react';
+import If from 'react-ifs';
 
 import { ToDoContext } from './todo-provider';
 import { LoginContext } from '../auth/login-provider';
-import If from '../if';
 import Form from './form';
 
 const UneditableItem = props => (

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import If from '../if';
+import If from 'react-ifs';
 
 const Auth = props => (
   <If condition={props.loggedIn}>

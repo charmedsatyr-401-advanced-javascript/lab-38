@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import superagent from 'superagent';
+import If from 'react-ifs';
 
 import { LoginContext } from './login-provider';
-import If from '../if';
 
 class Login extends Component {
   static contextType = LoginContext;

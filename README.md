@@ -8,7 +8,10 @@
 ### Links and Resources
 * [PR](https://github.com/charmedsatyr-401-advanced-javascript/lab-38/pull/1)
 * [![Build Status](https://travis-ci.com/charmedsatyr-401-advanced-javascript/lab-38.svg?branch=submission)](https://travis-ci.com/charmedsatyr-401-advanced-javascript/lab-38)
-* [Netlify]()
+
+* [Netlify](https://hungry-ptolemy-6142dd.netlify.com/)
+* [![Netlify Status](https://api.netlify.com/api/v1/badges/d38728f7-ce80-47e7-99da-d5c9836e58b9/deploy-status)](https://app.netlify.com/sites/hungry-ptolemy-6142dd/deploys)
+
 
 ### Modules
 ```
@@ -28,8 +31,6 @@
 │   │   │   ├── auth.js
 │   │   │   ├── login.js
 │   │   │   └── login-provider.js
-│   │   ├── if
-│   │   │   └── index.js
 │   │   └── todo
 │   │       ├── add-todo.js
 │   │       ├── count.js
@@ -58,7 +59,7 @@ In addition to the to do list display, A `Login` component provides a login form
 
 `./src/components/auth/` contains all files related to `<Login />` and `<Auth/>`. 
 
-Both to do- and login-related components use `<If/>` from `./src/components/if/index.js` for some conditional logic.
+Both to do- and login-related components use `<If/>` from the `react-ifs` package for some conditional logic.
 
 The API server has the following user accounts (`username:password`) that you can use to login as a user with varying permissions:
 * `user:USER` (read)
