@@ -46,20 +46,21 @@
 7 directories, 21 files
 ```
 ### Summary
-The application use the React Context API to illustrated to do list and role-based login functionality. 
+The application uses the React Context and React Hooks APIs to illustrate todo list and role-based access functionality. Context is accessed via `useContext` hooks throughout. The `<Login />` component has been converted to a function component and uses the `setState` hook. Future development will see use of the `useState` and `useReducer` hooks to manage the todo list, making even the `<ToDoProvider />` a function component.
 
-The `LoginContext` wraps the whole application, while the `ToDoContext` wraps only its component.
+The `LoginProvider` wraps the whole application, while the `ToDoProvider` wraps only the `ToDo` component.
 
-In addition to the to do list display, A `Login` component provides a login form, while an a `Auth` module displays the user's roles for testing purposes.
+In addition to the todo list display, A `Login` component provides a login form, while an a `Auth` module displays the user's roles for testing purposes.
 
-`index.js` renders `<App/>`.
-`<App/>` renders components `<Login/>`, `<Auth/>`, and `<ToDo/>`. All three receive context from their class component context providers `<LoginProvider/>` or `<ToDoProvider/>`.
+`index.js` renders `<App />`.
 
-`./src/components/todo/` contains all files related to `<Todo/>`. Its `index.js` renders `<Count/>`, `<AddToDo/>`, and `<List/>`. The `<ToDo/>` component uses `<If/>` from `./src/components/if/index.js` for some conditional logic.
+`<App />` renders components `<Login />`, `<Auth />`, and `<ToDo />`.
 
-`./src/components/auth/` contains all files related to `<Login />` and `<Auth/>`. 
+`./src/components/todo/` contains all files related to `<Todo />`. Its `index.js` renders `<Count />`, `<AddToDo />`, and `<List />`.
 
-Both to do- and login-related components use `<If/>` from the `react-ifs` package for some conditional logic.
+`./src/components/auth/` contains all files related to `<Login />` and `<Auth />`. 
+
+Both todo- and login-related components use `<If />` from the `react-ifs` package for some conditional logic.
 
 The API server has the following user accounts (`username:password`) that you can use to login as a user with varying permissions:
 * `user:USER` (read)

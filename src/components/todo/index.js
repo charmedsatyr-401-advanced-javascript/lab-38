@@ -9,28 +9,26 @@ import List from './list';
 
 import './todo.scss';
 
-const ToDo = props => {
-  return (
-    <If condition={props.loggedIn && props.capabilities.length > 0}>
-      <ToDoProvider>
-        {/* READ */}
+const ToDo = props => (
+  <If condition={props.loggedIn && props.capabilities.length > 0}>
+    <ToDoProvider>
+      {/* READ */}
 
-        <If condition={props.capabilities.includes('read')}>
-          <section className="todo">
-            <Count />
+      <If condition={props.capabilities.includes('read')}>
+        <section className="todo">
+          <Count />
 
-            {/* CREATE */}
-            <If condition={props.capabilities.includes('create')}>
-              <AddToDo />
-            </If>
+          {/* CREATE */}
+          <If condition={props.capabilities.includes('create')}>
+            <AddToDo />
+          </If>
 
-            {/* UPDATE, DELETE inside */}
-            <List capabilities={props.capabilities} />
-          </section>
-        </If>
-      </ToDoProvider>
-    </If>
-  );
-};
+          {/* UPDATE, DELETE inside */}
+          <List capabilities={props.capabilities} />
+        </section>
+      </If>
+    </ToDoProvider>
+  </If>
+);
 
 export default ToDo;

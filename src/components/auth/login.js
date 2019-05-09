@@ -1,62 +1,50 @@
-import React, { Component } from 'react';
+import React, { useContext, useState } from 'react';
 import superagent from 'superagent';
 import If from 'react-ifs';
 
 import { LoginContext } from './login-provider';
 
-class Login extends Component {
-  static contextType = LoginContext;
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const Login = props => {
+  const context = useContext(LoginContext);
+  const [state, setState] = useState({});
 
-  handleChange = e => {
+  const handleChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value });
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setState(prevState => {
+      return Object.assign({}, prevState, { [key]: value });
+    });
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const url = `${process.env.REACT_APP_API}/signin`;
+
+    console.log(state);
+
     superagent
       .post(url)
-      // .auth('admin', 'ADMIN')
-      .auth(this.state.username, this.state.password)
+      .auth(state.username, state.password)
       .then(result => {
         const token = result.text;
-        this.context.verify(token);
+        context.verify(token);
       })
       .catch(console.error);
   };
 
-  render() {
-    const { context } = this;
+  const Logout = () => <button onClick={context.logout}>log out</button>;
 
-    console.log(this.state);
-
-    const Logout = () => <button onClick={context.logout}>log out</button>;
-
-    return (
-      <If condition={!context.loggedIn} else={<Logout />}>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="username"
-            onChange={this.handleChange}
-            placeholder="username"
-            type="username"
-          />
-          <input
-            name="password"
-            onChange={this.handleChange}
-            placeholder="password"
-            type="password"
-          />
-          <input type="submit" value="login" />
-        </form>
-      </If>
-    );
-  }
-}
+  return (
+    <If condition={!context.loggedIn} else={<Logout />}>
+      <form onSubmit={handleSubmit}>
+        <input name="username" onChange={handleChange} placeholder="username" type="username" />
+        <input name="password" onChange={handleChange} placeholder="password" type="password" />
+        <input type="submit" value="login" />
+      </form>
+    </If>
+  );
+};
 
 export default Login;
